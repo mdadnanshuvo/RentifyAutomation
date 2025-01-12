@@ -1,42 +1,81 @@
 import openpyxl
-import os
 from openpyxl import Workbook
 
-# Define the XPaths, their descriptions, and the pages where they are used
-xpaths_info = [
-    {"xpath": "//input[@id='js-search-autocomplete']", "purpose": "Search input box", "pages": ["Home Page"]},
-    {"xpath": "//ul[@id='js-search-items']", "purpose": "List containing search suggestions", "pages": ["Home Page"]},
-    {"xpath": ".//li[contains(@class, 'google-auto-suggestion-list')]", "purpose": "Search suggestion items", "pages": ["Home Page"]},
-    {"xpath": "//input[@id='js-date-range-display']", "purpose": "Date range input field", "pages": ["Home Page"]},
-    {"xpath": "//td[contains(@class, 'datepicker__month-day--valid') and text()='${check_in_day}']", "purpose": "Check-in date picker cell", "pages": ["Home Page"]},
-    {"xpath": "//td[contains(@class, 'datepicker__month-day--valid') and text()='${check_out_day}']", "purpose": "Check-out date picker cell", "pages": ["Home Page"]},
-    {"xpath": "//button[@id='js-date-select']", "purpose": "Date selection confirmation button", "pages": ["Home Page"]},
-    {"xpath": "//div[@id='js-btn-search']", "purpose": "Search button", "pages": ["Home Page"]},
-    {"xpath": "//div[contains(@class, 'property-tiles')]//div[contains(@class, 'title')]//a", "purpose": "Property tiles anchor links", "pages": ["Home Page", "Refine Page"]},
-    {"xpath": "//div[@id='js-date-available'] | //div[@id='js-date-unavailable']", "purpose": "Availability indicators", "pages": ["Home Page", "Refine Page"]},
-    {"xpath": "//div[@id='js-date-available']", "purpose": "Available status indicator", "pages": ["Check Availability Page"]},
-    {"xpath": "//div[@id='js-date-unavailable']", "purpose": "Unavailable status indicator", "pages": ["Check Availability Page"]}
+# Define the XPATHs and associated pages and expected outcomes
+data = [
+    {
+        "base_url": "https://example.com",
+        "page_type": "Home",
+        "search_bar_xp": "//input[@id='js-search-autocomplete']",
+        "suggestions_dropdown_xp": "//ul[@id='js-search-items']",
+        "suggestion_item_xp": ".//li[contains(@class, 'google-auto-suggestion-list')]",
+        "date_picker_xp": "//input[@id='js-date-range-display']",
+        "calendar_date_xp": "//td[contains(@class, 'datepicker__month-day--valid')]",
+        "continue_button_xp": "//button[@id='js-date-select']",
+        "property_title_xp": "",
+        "date_availability_xp": "",
+        "expected_output": "Search initialized"
+    },
+    {
+        "base_url": "https://example.com",
+        "page_type": "Refine",
+        "search_bar_xp": "",
+        "suggestions_dropdown_xp": "",
+        "suggestion_item_xp": "",
+        "date_picker_xp": "",
+        "calendar_date_xp": "",
+        "continue_button_xp": "",
+        "property_title_xp": "div.title a",
+        "date_availability_xp": "//div[@id='js-date-available'] | //div[@id='js-date-unavailable']",
+        "expected_output": "Properties displayed"
+    },
+    {
+        "base_url": "https://example.com",
+        "page_type": "Hybrid",
+        "search_bar_xp": "",
+        "suggestions_dropdown_xp": "",
+        "suggestion_item_xp": "",
+        "date_picker_xp": "",
+        "calendar_date_xp": "",
+        "continue_button_xp": "",
+        "property_title_xp": "",
+        "date_availability_xp": "//div[@id='js-date-available'] | //div[@id='js-date-unavailable']",
+        "expected_output": "Dates validated"
+    }
 ]
 
-# Create a new Excel workbook and select the active sheet
+# Define the output Excel file path
+output_file = "workflow_xpaths.xlsx"
+
+# Create a new workbook and select the active sheet
 workbook = Workbook()
 sheet = workbook.active
-sheet.title = "XPath Information"
+sheet.title = "Workflow XPATHs"
 
-# Populate the first row with XPaths
-for col_num, xpath_info in enumerate(xpaths_info, start=1):
-    sheet.cell(row=1, column=col_num, value=xpath_info["xpath"])
+# Define the headers
+headers = [
+    "base_url",
+    "page_type",
+    "search_bar_xp",
+    "suggestions_dropdown_xp",
+    "suggestion_item_xp",
+    "date_picker_xp",
+    "calendar_date_xp",
+    "continue_button_xp",
+    "property_title_xp",
+    "date_availability_xp",
+    "expected_output"
+]
 
-    # Combine purpose and page info in the second row
-    details = f"Purpose: {xpath_info['purpose']} | Used in: {', '.join(xpath_info['pages'])}"
-    sheet.cell(row=2, column=col_num, value=details)
+# Write the headers to the Excel sheet
+for col_num, header in enumerate(headers, start=1):
+    sheet.cell(row=1, column=col_num, value=header)
 
-# Define the path to the data folder
-data_folder_path = os.path.join("data")
-# Ensure the data folder exists
-os.makedirs(data_folder_path, exist_ok=True)
+# Write the data to the Excel sheet
+for row_num, entry in enumerate(data, start=2):
+    for col_num, header in enumerate(headers, start=1):
+        sheet.cell(row=row_num, column=col_num, value=entry.get(header, ""))
 
-# Save the workbook to a file in the data folder
-excel_file_path = os.path.join(data_folder_path, "xpaths_info.xlsx")
-workbook.save(excel_file_path)
-print(f"Excel file '{excel_file_path}' created successfully.")
+# Save the Excel file
+workbook.save(output_file)
+print(f"Excel file '{output_file}' has been created successfully.")
