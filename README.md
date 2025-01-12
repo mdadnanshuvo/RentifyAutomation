@@ -134,7 +134,7 @@ The **Don't Repeat Yourself (DRY)** principle has been implemented throughout th
 ### Installation
 1. Clone the repository:
    ```bash
-   https://github.com/mdadnanshuvo/RentifyAutomation.git
+   git clone https://github.com/mdadnanshuvo/RentifyAutomation.git
    cd RentifyAutomation
    ```
 
