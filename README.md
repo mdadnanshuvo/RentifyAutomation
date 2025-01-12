@@ -135,15 +135,23 @@ The **Don't Repeat Yourself (DRY)** principle has been implemented throughout th
 1. Clone the repository:
    ```bash
    git clone https://github.com/mdadnanshuvo/RentifyAutomation.git
+   
+   ```
+2. Navigate to the repository:
+   ```
    cd RentifyAutomation
    ```
-
-2. Set up a virtual environment:
+3. Set up a virtual environment:
    ```
-   python3 -m venv env
-   source env/bin/activate  # On Windows: env\Scripts\activate
+   python3 -m venv env   # Please use python version that is installed on your machine.
+  
    ```
-3. Install the required dependencies:
+4. Activate the virtual environment:
+   ```
+    source env/bin/activate  # On Windows: env\Scripts\activate
+   ```
+   
+5. Install the required dependencies:
    ```
    pip install -r requirements.txt
    ```
