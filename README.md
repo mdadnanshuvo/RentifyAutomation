@@ -148,7 +148,7 @@ The **Don't Repeat Yourself (DRY)** principle has been implemented throughout th
    pip install -r requirements.txt
    ```
 ## How to Run Tests
-1. Just run the main.py file:
+1. Now pleaes run the main.py file:
    ```
    python main.py
    ```
