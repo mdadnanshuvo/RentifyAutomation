@@ -8,7 +8,7 @@ RentifyAutomation is a Python-based test automation framework designed to automa
 ---
 
 ## Table of Contents
-- [Vacation Rental Automation](#RentifyAutomation)
+- [RentifyAutomation](#RentifyAutomation)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
