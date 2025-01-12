@@ -134,8 +134,8 @@ The **Don't Repeat Yourself (DRY)** principle has been implemented throughout th
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/mdadnanshuvo/vacation_rental_automation.git
-   cd vacation_rental_automation
+   https://github.com/mdadnanshuvo/RentifyAutomation.git
+   cd RentifyAutomation
    ```
 
 2. Set up a virtual environment:
