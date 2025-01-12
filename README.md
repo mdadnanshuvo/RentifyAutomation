@@ -1,14 +1,14 @@
 
-# Vacation Rental Automation
+# RentifyAutomation
 
-[![GitHub](https://img.shields.io/badge/GitHub-vacation_rental_automation-blue)](https://github.com/mdadnanshuvo/vacation_rental_automation)
+[![GitHub](https://img.shields.io/badge/GitHub-RentifyAutomation-blue)](https://github.com/mdadnanshuvo/RentifyAutomation)
 
-Vacation Rental Automation is a Python-based test automation framework designed to automate the testing of vacation rental platforms. The framework is built using the Selenium WebDriver and follows the **Page Object Model (POM)** design pattern to ensure maintainability, scalability, and reusability.
+RentifyAutomation is a Python-based test automation framework designed to automate the testing of vacation rental platforms. The framework is built using the Selenium WebDriver and follows the **Page Object Model (POM)** design pattern to ensure maintainability, scalability, and reusability.
 
 ---
 
 ## Table of Contents
-- [Vacation Rental Automation](#vacation-rental-automation)
+- [Vacation Rental Automation](#RentifyAutomation)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
@@ -46,7 +46,7 @@ Vacation Rental Automation is a Python-based test automation framework designed 
 
 ## Project Structure
 ```
-vacation_rental_automation/
+RentifyAutomation/
 ├── .vscode/                   # VSCode configuration files
 ├── config/                    # Configuration files
 │   ├── __init__.py
